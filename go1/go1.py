@@ -1,13 +1,12 @@
 import gymnasium
 from gymnasium.wrappers import RecordEpisodeStatistics, RecordVideo
-from robot_descriptions import go1_mj_description
 
 num_eval_episodes = 4
 
 def create_env():
     return gymnasium.make(
         'Ant-v5',
-        xml_file=go1_mj_description.MJCF_PATH,
+        xml_file='../mujoco_menagerie/unitree_go1/scene.xml',
         forward_reward_weight=1,
         ctrl_cost_weight=0.05,
         contact_cost_weight=5e-4,
@@ -24,7 +23,7 @@ def create_env():
 def create_env_with_recording(video_folder="recordings", render_mode="rgb_array"):
     env = gymnasium.make(
         'Ant-v5',
-        xml_file=go1_mj_description.MJCF_PATH,
+        xml_file='../mujoco_menagerie/unitree_go1/scene.xml',
         forward_reward_weight=1,
         ctrl_cost_weight=0.05,
         contact_cost_weight=5e-4,
